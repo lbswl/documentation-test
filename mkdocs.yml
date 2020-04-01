@@ -13,3 +13,4 @@ theme:
     - 'stylesheets/extra.css'
 nav:
     - Overview: 'index.md'
+    - How To: 'how-to.md'
