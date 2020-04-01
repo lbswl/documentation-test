@@ -1,0 +1,15 @@
+site_name: 'Company'
+site_description: 'Company Documentation'
+theme:
+  name: 'material'
+  custom_dir: my_theme_customizations/
+  palette:
+    primary: 'white'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  extra_css:
+    - 'stylesheets/extra.css'
+nav:
+    - Overview: 'index.md'
