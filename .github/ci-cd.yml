@@ -1,0 +1,37 @@
+name: Continuous Integration and Deployment
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies and run tests
+        run: |
+          pip install -r requirements.txt
+      - run: mkdocs build
+      
+      - name: HTMLProofer
+        uses: chabad360/htmlproofer@v1.1
+        with:
+          directory: "./site"
+          arguments: --disable-external
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+        env:
+          SOURCE_DIR: "site/"
+          AWS_REGION: "us-east-2"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
