@@ -9,6 +9,7 @@ The following sections explain the predefined roles that Impira offers, permissi
 
 *   [Predefined Roles](#predefined-roles)
 *   [Permission Levels](#permission-levels)
+*   [Permission Access](#permission-access)
 
 
 # Predefined Roles
@@ -325,3 +326,7 @@ The following table lists the functionality that each role can access in the Imp
 
 
 A user with an **Upload Only** role can only download the assets that they uploaded to the platform.
+
+## Permission Access
+
+New text. This is another sentence.
